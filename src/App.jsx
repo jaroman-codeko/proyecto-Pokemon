@@ -1,11 +1,26 @@
-import { useState } from "react";
-import { Entrega } from "./Entrega";
+import { useEffect } from "react";
 import "./App.css";
-
+import {
+  obtenerTodosPokemons,
+  obtenerPokemonName,
+  obtenerPokemonDescription,
+  obtenerGeneraciones,
+  obtenerGeneracionesId,
+  obtenerItemId,
+} from "./api/index";
 function App() {
-  const [count, setCount] = useState(0);
+  const datos = async () => {
+    //const s = await obtenerPokemonName(1);
+    const data = await obtenerItemId(193);
 
-  return <Entrega></Entrega>;
+    console.log(data);
+  };
+
+  useEffect(() => {
+    datos();
+  }, []);
+
+  return <h1>Datos</h1>;
 }
 
 export default App;
