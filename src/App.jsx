@@ -1,26 +1,16 @@
-import { useEffect } from "react";
 import "./App.css";
-import {
-  obtenerTodosPokemons,
-  obtenerPokemonName,
-  obtenerPokemonDescription,
-  obtenerGeneraciones,
-  obtenerGeneracionesId,
-  obtenerItemId,
-} from "./api/index";
+import { HeaderComponent } from "./componentes/index";
+import { FooterComponent } from "./componentes/index";
+import { AppRouter } from "./router/AppRouter";
+
 function App() {
-  const datos = async () => {
-    //const s = await obtenerPokemonName(1);
-    const data = await obtenerItemId(193);
-
-    console.log(data);
-  };
-
-  useEffect(() => {
-    datos();
-  }, []);
-
-  return <h1>Datos</h1>;
+  return (
+    <main>
+      <HeaderComponent></HeaderComponent>
+      <AppRouter></AppRouter>
+      <FooterComponent></FooterComponent>
+    </main>
+  );
 }
 
 export default App;
