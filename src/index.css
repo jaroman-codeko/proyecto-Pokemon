@@ -1,9 +1,18 @@
 * {
   box-sizing: content-box;
+  font-family: "Atkinson Hyperlegible Mono";
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+a:hover {
+  color: white;
 }
 
 body {
-  background-color: #a7cecb;
+  background-color: #fe9595;
+  margin-top: 190px;
 }
 
 .flex {
@@ -34,11 +43,165 @@ body {
   color: #c9dcb3;
 }
 
-.violeta:hover {
-  background-color: #a7cecb;
-  font-size: large;
+.gray:hover {
+  background-color: #ff1c1c;
+  font-size: x-large;
   cursor: pointer;
-  box-shadow: #5f6062 4px 5px;
+  box-shadow: #403f3f 4px 5px 10px;
   text-decoration: underline;
-  padding: 0px 12px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  color: #ffffff;
+  border: black 3px solid;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.aling-content-center {
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1320px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex-direction: column;
+}
+
+.contenedor-total {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex: 1 0 0%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.col-2 {
+  flex: 0 0 10%;
+  max-width: 10%;
+}
+.col-3 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+.col-4 {
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+.col-5 {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.col-8 {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+.col-9 {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+.col-10 {
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+.col-11 {
+  flex: 0 0 90%;
+  max-width: 90%;
+}
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.m-1 {
+  margin: 0px 5%;
+}
+.m-2 {
+  margin: 0px 10%;
+}
+.m-3 {
+  margin: 0px 15%;
+}
+.m-4 {
+  margin: 0px 5%;
+}
+.m-5 {
+  margin: 0px 5%;
+}
+.mx-1 {
+  margin: 0 5%;
+}
+
+.my-1 {
+  margin: 5% 0;
+}
+
+.my-2 {
+  margin: 10% 0;
+}
+.my-3 {
+  margin: 15% 0;
+}
+
+.my-4 {
+  margin: 20% 0;
+}
+.mb-5 {
+  margin-bottom: 25%;
+}
+.p-1 {
+  padding: 5%;
+}
+.p-2 {
+  padding: 10%;
+}
+.py-1 {
+  padding: 0 5%;
+}
+.py-2 {
+  padding: 0 10%;
+}
+
+.caja {
+  box-shadow: #000000 0px 0px 40px;
+  border-radius: 25px;
+  border-bottom: red ridge 13px;
+  border-top: ridge rgb(0, 0, 0) 13px;
+  background: white;
+  height: min-content;
+  text-align: center;
+}
+
+.caja:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 0px 50px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }

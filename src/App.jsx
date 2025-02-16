@@ -5,11 +5,13 @@ import { AppRouter } from "./router/AppRouter";
 
 function App() {
   return (
-    <main>
+    <>
       <HeaderComponent></HeaderComponent>
-      <AppRouter></AppRouter>
+      <main>
+        <AppRouter></AppRouter>
+      </main>
       <FooterComponent></FooterComponent>
-    </main>
+    </>
   );
 }
 

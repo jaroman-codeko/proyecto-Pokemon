@@ -13,12 +13,13 @@ export const obtenerTodosPokemons = async () => {
   }
 };
 //obtiene un pokemon por el nombre o numero
-export const obtenerPokemonName = async (name) => {
+export const obtenerPokemonName = async (names) => {
   try {
-    const { data } = await api.get(`/pokemon/${name}`);
+    const { data } = await api.get(`/pokemon/${names}`);
     const {
       abilities,
       cries: { latest },
+
       id,
       height,
       moves,
@@ -32,10 +33,12 @@ export const obtenerPokemonName = async (name) => {
       stats,
       types,
       weight,
+      name,
     } = data;
 
     const pokemonData = {
       habilidad: abilities,
+      nombre: name,
       grito: latest,
       id,
       movimiento: moves,
