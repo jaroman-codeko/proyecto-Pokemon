@@ -1,91 +1,87 @@
-import React, { useEffect, useRef, useState } from "react";
-import { obtenerPokemonName } from "../api/services/pokemonService";
+import { useObtenerPokemones } from "../hooks/useObtenerPokemones";
 export const Pokemons = () => {
-  const [datos, setDatos] = useState([]);
-  const [numero, setNumero] = useState(35);
-  const [nuevo, setNuevo] = useState(false);
-  const [numeroInicial, setNumeroInicial] = useState(1);
-
-  const obtenerDatos = async () => {
-    const contenedorDatos = [];
-
-    for (let index = numeroInicial; index <= numero; index++) {
-      const pokemon = await obtenerPokemonName(index);
-
-      contenedorDatos.push(pokemon);
-    }
-    let datosPokemon = [...datos, ...contenedorDatos];
-    console.log(datosPokemon);
-
-    setDatos(datosPokemon);
-    setNuevo(false);
-  };
-
-  useEffect(() => {
-    obtenerDatos();
-  }, [nuevo]);
+  const {
+    handleSubmit,
+    pokemonNombre,
+    datos,
+    nuevo,
+    setPokemonNombre,
+    setNumero,
+    setNumeroInicial,
+    numero,
+    setNuevo,
+    dispatch,
+    buscarPokemon,
+    navigate,
+  } = useObtenerPokemones();
 
   return (
     <>
-      <div className="contenedor my-1 flex justify-content-center aling-content-center">
-        <div className="caja p-1 ">
-          <h2 className="">Buscar por nombre un pokemon en concreto:</h2>
-          <form action="">
-            <input
-              type="text"
-              className="m-1 py-1 px-1"
-              placeholder="Nombre del pokemon"
-            />
-            <button className="btn btn-red">Buscar</button>
-          </form>
+      <div className="contenedor">
+        <div className=" fila flex justify-content-center align-content-center my-1">
+          <div className="caja p-1 ">
+            <h2>Buscar por nombre un Pokémon en concreto:</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className="m-1 py-1 px-1 inputText"
+                placeholder="Nombre del Pokémon"
+                value={pokemonNombre}
+                name={pokemonNombre}
+                onChange={(e) => setPokemonNombre(e.target.value)}
+              />
+              <button className="btn btn-red">Buscar</button>
+            </form>
+          </div>
         </div>
       </div>
       <div className="contenedor">
         <div className="fila">
-          {datos?.map(({ id, nombre, imagenesMovimiento, tipo }) => (
-            <div className="col-3 mx-1" key={id || nombre}>
-              <div className="caja">
-                <h4>Pokemon</h4>
-                <h6>
-                  Nombre: {nombre[0].toUpperCase().concat(nombre.slice(1))}
-                </h6>
-                {imagenesMovimiento?.front_default ? (
-                  <img src={imagenesMovimiento.front_default} alt={nombre} />
-                ) : (
-                  <p>Imagen no disponible</p>
-                )}
-                <h6>
-                  Tipo 1:{" "}
-                  {tipo?.[0]?.type?.name[0]
-                    .toUpperCase()
-                    .concat(tipo?.[0]?.type?.name.slice(1)) || "Desconocido"}
-                </h6>
-                {tipo?.[1] && (
+          {datos.map(
+            ({ id, nombre, imagenesMovimiento, tipo, vistaFrontal }) => (
+              <div className="col-3 mx-1" key={id || nombre}>
+                <div className="caja">
+                  <h4>Pokémon</h4>
+                  <h6>Nombre: {nombre[0].toUpperCase() + nombre.slice(1)}</h6>
+                  {imagenesMovimiento?.front_default ? (
+                    <img src={imagenesMovimiento.front_default} alt={nombre} />
+                  ) : (
+                    <img src={vistaFrontal} alt={nombre} />
+                  )}
                   <h6>
-                    Tipo 2:{" "}
-                    {tipo?.[1]?.type?.name[0]
-                      .toUpperCase()
-                      .concat(tipo?.[1]?.type?.name.slice(1))}
+                    Tipo 1:
+                    {tipo?.[0]?.type?.name[0].toUpperCase() +
+                      tipo?.[0]?.type?.name.slice(1) || "Desconocido"}
                   </h6>
-                )}
-                <button
-                  onClick={() => console.log(nombre)}
-                  className="btn my-1"
-                >
-                  Ver mas
-                </button>
+                  {tipo?.[1] && (
+                    <h6>
+                      Tipo 2:
+                      {tipo?.[1]?.type?.name[0].toUpperCase() +
+                        tipo?.[1]?.type?.name.slice(1)}
+                    </h6>
+                  )}
+                  <button
+                    onClick={() => {
+                      dispatch(buscarPokemon(nombre));
+                      navigate(`/pokemons/${nombre}`);
+                    }}
+                    className="btn my-1"
+                  >
+                    Ver más
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
-        {nuevo ? "cargando..." : ""}
+        {nuevo && <p>Cargando...</p>}
         <div className="flex justify-content-center align-content-center">
           <button
             className="btn my-1"
             onClick={() => {
-              setNumero(numero + 25);
-              setNuevo(true);
+              setNumero((prev) => prev + 250);
               setNumeroInicial(numero + 1);
+              setNuevo(true);
             }}
           >
             Nuevos

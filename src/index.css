@@ -200,6 +200,7 @@ h6 {
   background: white;
   height: min-content;
   text-align: center;
+  margin: 15px 0px;
 }
 
 .caja:hover {
@@ -210,7 +211,7 @@ h6 {
 }
 
 .btn {
-  padding: 5px;
+  padding: 12px;
   border: #ff1c1c solid 2px;
   border-radius: 3px;
   background-color: #000000;
@@ -225,4 +226,7 @@ h6 {
   color: black;
   cursor: pointer;
   font-weight: bold;
+}
+.inputText {
+  height: 35px;
 }
