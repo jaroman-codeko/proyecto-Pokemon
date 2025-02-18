@@ -22,14 +22,16 @@ export const obtenerItemId = async (id) => {
       flavor_text_entries,
       names,
       sprites,
+      name,
     } = results;
     const obj = {
       atributos: attributes,
       categoria: category.name,
-      efecto: effect_entries[0].effect,
-      descripcion: flavor_text_entries[52].text,
+      efecto: effect_entries[0]?.effect,
+      descripcion: flavor_text_entries[52]?.text,
       nombres: names,
-      image: sprites.default,
+      nombre: name,
+      image: sprites?.default,
     };
 
     return obj;

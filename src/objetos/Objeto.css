@@ -1,0 +1,66 @@
+.objetos-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.objetos-container h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 60px;
+  text-transform: capitalize;
+  border-bottom: rgb(142, 3, 3) solid 8px;
+  border-top: rgb(10, 10, 10) solid 8px;
+
+  padding: 35px;
+  background-color: #f4f4f4;
+  border-radius: 25px;
+  box-shadow: rgb(159, 13, 13) 0px 0px 50px;
+}
+
+.objeto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: rgb(142, 3, 3) solid 6px;
+  border-top: rgb(10, 10, 10) solid 6px;
+
+  gap: 20px;
+  background: #f9f9f9;
+  border-radius: 90px;
+  padding: 20px;
+  margin: 25px 0px;
+  box-shadow: rgb(159, 13, 13) -2px 10px 20px;
+}
+
+.objeto img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: 70px;
+}
+
+.objeto h4 {
+  color: #333;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.objeto p {
+  color: #0f0f0f;
+  margin: 5px 0;
+}
+
+.objeto .descripcion {
+  color: #333;
+}
+
+.objeto .categoria,
+.objeto .efecto {
+  font-weight: bold;
+}
+
+.objeto .descripcion,
+.objeto .categoria,
+.objeto .efecto {
+  margin-bottom: 10px;
+}

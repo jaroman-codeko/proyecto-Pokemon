@@ -65,14 +65,14 @@ header {
   }
 }
 
-ul {
+header ul {
   margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-ul li {
+header ul li {
   text-decoration: none;
   margin: 15px 25px;
   list-style: none;

@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
-import {
-  obtenerGeneraciones,
-  obtenerGeneracionesId,
-} from "../api/services/generacionService";
+import { useObtenerGeneraciones } from "../hooks/useObtenerGeneraciones";
+
+import "./Generaciones.css";
 
 export const Generaciones = () => {
-  const [generaciones, setGeneraciones] = useState([]);
+  const { generaciones } = useObtenerGeneraciones();
 
-  const obtenDatos = async () => {
-    const data = await obtenerGeneraciones();
-
-    const arr = data.map(({ name }) => obtenerGeneracionesId(name));
-
-    const arrayDatos = await Promise.all(arr);
-
-    setGeneraciones(arrayDatos);
-  };
-  useEffect(() => {
-    obtenDatos();
-  }, []);
-  console.log(generaciones);
   return (
-    <div>
+    <div className="generaciones-container">
       {generaciones.map(
         ({
           nombreRegion,
@@ -31,17 +16,18 @@ export const Generaciones = () => {
           tiposGeneracion,
           versionJuego,
         }) => (
-          <div>
-            <h2 key={nombreRegion}>{nombreRegion}</h2>
-            <h4>pokemon que vienen en esta Generacion:</h4>
+          <div key={nombreRegion} className="generacion">
+            <h2>{nombreRegion}</h2>
+            <h4>Pokémon de esta generación:</h4>
             <ul>
               {pokemonGeneracionales.map(({ name }) => (
-                <li>{name}</li>
+                <li key={name}>{name}</li>
               ))}
             </ul>
-            {habilidadesGeneracion.length >= 1 && (
+
+            {habilidadesGeneracion.length > 0 && (
               <>
-                <h4>habilidades de esta generacion </h4>
+                <h4>Habilidades de esta generación:</h4>
                 <ul>
                   {habilidadesGeneracion.map(({ name }) => (
                     <li key={name}>{name}</li>
@@ -49,15 +35,17 @@ export const Generaciones = () => {
                 </ul>
               </>
             )}
-            <h4>Movimientos de esta generacion </h4>
+
+            <h4>Movimientos de esta generación:</h4>
             <ul>
               {movimientosGeneracion.map(({ name }) => (
                 <li key={name}>{name}</li>
               ))}
             </ul>
-            {tiposGeneracion.length >= 1 && (
+
+            {tiposGeneracion.length > 0 && (
               <>
-                <h4>Tipos de esta generacion </h4>
+                <h4>Tipos de esta generación:</h4>
                 <ul>
                   {tiposGeneracion.map(({ name }) => (
                     <li key={name}>{name}</li>
@@ -66,10 +54,10 @@ export const Generaciones = () => {
               </>
             )}
 
-            <h4>Juegos de esta generacion </h4>
+            <h4>Juegos de esta generación:</h4>
             <ul>
               {versionJuego.map(({ name }) => (
-                <li key={name}> Pokemon {name}</li>
+                <li key={name}>Pokémon {name}</li>
               ))}
             </ul>
           </div>
