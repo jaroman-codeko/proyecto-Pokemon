@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { buscarPokemon } from "./thunk";
+import { buscarPokemon, eliminaPokemonAlmacenado } from "./thunk";
 
 const initialState = { loading: null, pokemon: {}, status: null };
 
@@ -20,6 +20,9 @@ const PokemonSlice = createSlice({
       .addCase(buscarPokemon.fulfilled, (state, action) => {
         state.pokemon = action.payload;
         unsetLoading(state);
+      })
+      .addCase(eliminaPokemonAlmacenado.fulfilled, (state) => {
+        state.pokemon = {};
       })
       .addMatcher((action) => action.type.endsWith("/pending"), setLoading)
       .addMatcher((action) => action.type.endsWith("/rejected"), unsetLoading);

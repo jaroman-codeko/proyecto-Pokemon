@@ -39,7 +39,7 @@ export const Home = () => {
       </div>
       <div className="contenedor">
         <div className="caja my-2">
-          <p className="py-2">
+          <div className="py-2">
             <h3>Agradecimiento</h3>
             ¡Hola! Soy José Antonio, y es un placer compartir contigo esta
             aplicación que he diseñado con mucho cariño. Desde pequeño, Pokémon
@@ -49,7 +49,7 @@ export const Home = () => {
             experiencia divertida e inmersiva, capturando la esencia del mundo
             Pokémon. Espero que la disfrutes tanto como yo disfruté
             desarrollándola. ¡Gracias por probarla y bienvenido a esta aventura!
-          </p>
+          </div>
         </div>
       </div>
     </div>

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { obtenerPokemonName } from "../api/services/pokemonService";
-import { useDispatch } from "react-redux";
-import { buscarPokemon } from "../store/pokemonStore/thunk";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  buscarPokemon,
+  eliminaPokemonAlmacenado,
+} from "../store/pokemonStore/thunk";
 import { useNavigate } from "react-router";
 
 export const useObtenerPokemones = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //  dispatch(eliminaPokemonAlmacenado());
+  const { pokemon, loading } = useSelector((state) => state.pokemon) || {};
 
   const [datos, setDatos] = useState([]);
   const [numero, setNumero] = useState(35);

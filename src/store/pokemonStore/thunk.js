@@ -12,3 +12,9 @@ export const buscarPokemon = createAsyncThunk("Pokemon", async (name) => {
     datosPokemon,
   };
 });
+export const eliminaPokemonAlmacenado = createAsyncThunk(
+  "pokemon/eliminaPokemonAlmacenado",
+  async () => {
+    return {};
+  }
+);

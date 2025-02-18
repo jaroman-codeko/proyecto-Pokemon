@@ -1,3 +1,4 @@
+import { data } from "react-router";
 import { api } from "../api";
 
 //consulta a la api  cual obtiene todos los pokemons
@@ -16,6 +17,7 @@ export const obtenerTodosPokemons = async () => {
 export const obtenerPokemonName = async (names) => {
   try {
     const { data } = await api.get(`/pokemon/${names}`);
+
     const {
       abilities,
       cries: { latest },
@@ -61,11 +63,12 @@ export const obtenerPokemonName = async (names) => {
 
 export const obtenerPokemonDescription = async (id) => {
   const { data: result } = await api.get(`/pokemon-species/${id}`);
+
   const { flavor_text_entries, genera, habitat, names } = result;
   const obj = {
-    descripcion: flavor_text_entries[26].flavor_text,
-    mote: genera[5].genus,
-    habitat: habitat.name,
+    descripcion: flavor_text_entries[26]?.flavor_text,
+    mote: genera[5]?.genus,
+    habitat: habitat?.name || "Desconocido",
     nombresIdiomas: names,
   };
   return obj;
