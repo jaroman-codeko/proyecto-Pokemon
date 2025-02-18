@@ -1,32 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import play from "../../src/img/play.webp";
+import { useMuestraPokemon } from "../hooks/useMuestraPokemon";
 
 export const Pokemon = () => {
-  const { pokemon, loading } = useSelector((state) => state.pokemon) || {};
-  const { datosDescripcionPokemon = {}, datosPokemon = {} } = pokemon || {};
-
-  const { mote, descripcion, habitat, nombreIdiomas } = datosDescripcionPokemon;
   const {
+    loading,
+    mote,
+    descripcion,
+    nombreIdiomas,
     altura,
     estadisticas,
-    grito,
     habilidad,
-    imagenesMovimiento,
+    imagenesMovArr,
+    sonido,
     nombre,
     peso,
     tipo,
-  } = datosPokemon;
-
-  let imagenesMovArr = Object.values(imagenesMovimiento || {}).filter(
-    (url) => url !== null
-  );
-
-  let imagenesMovArrTemp = imagenesMovArr[0];
-  imagenesMovArr[0] = imagenesMovArr[imagenesMovArr.length - 1];
-  imagenesMovArr[imagenesMovArr.length - 1] = imagenesMovArrTemp;
-  const sonido = new Audio(grito);
-  console.log(datosPokemon);
+    habitat,
+  } = useMuestraPokemon();
 
   return (
     <>
