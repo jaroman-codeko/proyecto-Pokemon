@@ -16,9 +16,9 @@ export const useObtenerPokemones = () => {
   const [nuevo, setNuevo] = useState(true);
   const [numeroInicial, setNumeroInicial] = useState(1);
   const [pokemonNombre, setPokemonNombre] = useState("");
+  const [cargando, setCargando] = useState(true);
 
   const handleSubmit = (e) => {
-    console.log(pokemonNombre);
     dispatch(eliminaPokemonAlmacenado());
     e.preventDefault();
     dispatch(buscarPokemon(pokemonNombre));
@@ -40,6 +40,7 @@ export const useObtenerPokemones = () => {
       const contenedorDatos = await Promise.all(datosPoke);
 
       setDatos([...datos, ...contenedorDatos]);
+      setCargando(false);
     } catch (error) {
       console.error("Error obteniendo los datos:", error);
     }
@@ -63,5 +64,6 @@ export const useObtenerPokemones = () => {
     dispatch,
     buscarPokemon,
     navigate,
+    cargando,
   };
 };

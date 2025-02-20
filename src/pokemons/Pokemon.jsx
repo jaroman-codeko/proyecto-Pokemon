@@ -23,7 +23,7 @@ export const Pokemon = () => {
       {!loading ? (
         <div className="contenedor">
           <div className="caja my-1">
-            <h2>{nombre}</h2>
+            <h2 style={{ textTransform: "capitalize" }}>{nombre}</h2>
             <h3>{mote}</h3>
             <div>
               {imagenesMovArr.map((el, index) => (

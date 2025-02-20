@@ -65,8 +65,10 @@ export const obtenerPokemonDescription = async (id) => {
   const { data: result } = await api.get(`/pokemon-species/${id}`);
 
   const { flavor_text_entries, genera, habitat, names } = result;
+  const des = flavor_text_entries.filter((el) => el.language.name == "es");
+  console.log(des);
   const obj = {
-    descripcion: flavor_text_entries[26]?.flavor_text,
+    descripcion: des[0]?.flavor_text,
     mote: genera[5]?.genus,
     habitat: habitat?.name || "Desconocido",
     nombresIdiomas: names,

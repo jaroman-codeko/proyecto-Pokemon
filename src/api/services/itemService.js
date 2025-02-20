@@ -24,11 +24,14 @@ export const obtenerItemId = async (id) => {
       sprites,
       name,
     } = results;
+
+    const item = flavor_text_entries.find((el) => el.language.name == "es");
+
     const obj = {
       atributos: attributes,
       categoria: category.name,
       efecto: effect_entries[0]?.effect,
-      descripcion: flavor_text_entries[52]?.text,
+      descripcion: item?.text,
       nombres: names,
       nombre: name,
       image: sprites?.default,
