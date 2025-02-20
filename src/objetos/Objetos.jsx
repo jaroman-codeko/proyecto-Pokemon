@@ -2,6 +2,7 @@ import { useObjetos } from "../hooks/useObjetos";
 import "./Objeto.css";
 
 export const Objetos = () => {
+  //custom hook encargado de recoger los datos de los objetos
   const { cargando, objetos } = useObjetos();
 
   return (
