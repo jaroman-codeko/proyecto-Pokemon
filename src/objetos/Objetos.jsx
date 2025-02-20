@@ -6,13 +6,10 @@ export const Objetos = () => {
   const [objetos, setObjetos] = useState([]);
 
   const obtenDatos = async () => {
-    let arr = [];
-
-    for (let index = 1; index <= 100; index++) {
-      const element = await obtenerItemId(index);
-      arr.push(element);
-    }
-
+    const promesas = Array.from({ length: 150 }, (_, index) =>
+      obtenerItemId(index + 1)
+    );
+    const arr = await Promise.all(promesas);
     setObjetos(arr);
   };
 

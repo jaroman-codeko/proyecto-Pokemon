@@ -5,6 +5,7 @@ export const useMuestraPokemon = () => {
   const { datosDescripcionPokemon = {}, datosPokemon = {} } = pokemon || {};
 
   const { mote, descripcion, habitat, nombreIdiomas } = datosDescripcionPokemon;
+
   const {
     altura,
     estadisticas,

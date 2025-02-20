@@ -10,7 +10,6 @@ import { useNavigate } from "react-router";
 export const useObtenerPokemones = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  dispatch(eliminaPokemonAlmacenado());
 
   const [datos, setDatos] = useState([]);
   const [numero, setNumero] = useState(35);
@@ -19,6 +18,8 @@ export const useObtenerPokemones = () => {
   const [pokemonNombre, setPokemonNombre] = useState("");
 
   const handleSubmit = (e) => {
+    console.log(pokemonNombre);
+    dispatch(eliminaPokemonAlmacenado());
     e.preventDefault();
     dispatch(buscarPokemon(pokemonNombre));
     setPokemonNombre("");

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { Home } from "../home/Home";
 import { Pokemon, Pokemons } from "../pokemons";
 import { Generaciones } from "../generaciones";
@@ -8,15 +8,21 @@ import { Objetos, Objeto } from "../objetos/";
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="*" element={<Home></Home>}></Route>
-      <Route path="/pokemons/*" element={<Pokemon></Pokemon>}></Route>
-      <Route path="/pokemons" element={<Pokemons></Pokemons>}></Route>
-      <Route
-        path="/generaciones"
-        element={<Generaciones></Generaciones>}
-      ></Route>
-      <Route path="/objetos" element={<Objetos></Objetos>}></Route>
-      <Route path="/objetos/*" element={<Objeto></Objeto>}></Route>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/pokemons">
+        <Route index element={<Pokemons />} />
+        <Route path=":id" element={<Pokemon />} />
+      </Route>
+
+      <Route path="/generaciones" element={<Generaciones />} />
+
+      <Route path="/objetos">
+        <Route index element={<Objetos />} />
+        <Route path=":id" element={<Objeto />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
