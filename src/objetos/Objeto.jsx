@@ -1,5 +1,13 @@
 import React from "react";
-
+import { useObjetos } from "../hooks/useObjetos";
 export const Objeto = () => {
-  return <div>Objeto</div>;
+
+ const {objetos}=useObjetos();
+  
+  const objeto=objetos.find(el=>el.name=="master-ball")
+
+  return <div>
+    <p>{objeto.name}</p>
+    <img src={objeto.image} alt="" />
+  </div>;
 };
